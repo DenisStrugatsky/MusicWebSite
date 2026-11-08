@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебный сайт о музыке">
+  <title>Заказать альбом</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><span>&#9835;</span>Музыка</div>
+  <nav class="nav" aria-label="Разделы сайта">
+    <a href="index.html">Главная</a>
+    <a href="info.html">Общая информация</a>
+    <a href="history.html">История</a>
+    <a href="disc.html">Дискография</a>
+    <a href="film.html">Фильмография</a>
+    <a href="links.html">Источники</a>
+    <span aria-current="page">Заказать альбом</span>
+    <a href="contact.html">Контакты</a>
+  </nav>
+</header>
+
+<main class="page">
+<h1>Заказать альбом</h1>
+<p class="text" style="text-align:center">Выберите альбомы, укажите контакты — мы подтвердим заказ и свяжемся с вами.</p>
+
+<noscript><p class="card">Для работы формы включите JavaScript в браузере или напишите нам на странице «Контакты».</p></noscript>
+
+<div class="order">
+<form id="order-form" novalidate autocomplete="on">
+  <div class="card">
+    <h2>1. Что заказываем</h2>
+    <div class="items" id="items"></div>
+    <button type="button" class="btn-ghost" id="add-item">+ Добавить ещё альбом</button>
+  </div>
+
+  <div class="card">
+    <h2>2. Ваши контакты</h2>
+    <div class="field">
+      <label for="name">Имя <span class="req">*</span></label>
+      <input id="name" name="name" type="text" autocomplete="name" maxlength="80">
+      <span class="err"></span>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label for="phone">Телефон <span class="req">*</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" maxlength="25">
+        <span class="err"></span>
+      </div>
+      <div class="field">
+        <label for="email">E-mail <span class="req">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="100">
+        <span class="err"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. Получение</h2>
+    <div class="choices" id="delivery-choices"></div>
+    <div class="field" id="address-field" hidden>
+      <label for="address">Адрес доставки <span class="req">*</span></label>
+      <input id="address" name="address" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира, индекс" maxlength="200">
+      <span class="err"></span>
+    </div>
+    <div class="field" style="margin-bottom:0">
+      <label for="comment">Комментарий к заказу</label>
+      <textarea id="comment" name="comment" maxlength="500" placeholder="Например: удобное время звонка"></textarea>
+    </div>
+  </div>
+
+  <div class="total" aria-live="polite">
+    <div>Итого<small id="total-note"></small></div>
+    <strong id="total">0 ₽</strong>
+  </div>
+
+  <div class="check" id="consent-wrap">
+    <input type="checkbox" id="consent" name="consent">
+    <label for="consent">Я согласен(на) на обработку введённых данных для оформления заказа <span class="req" style="color:var(--danger)">*</span></label>
+    <span class="err">Поставьте галочку, чтобы отправить заказ</span>
+  </div>
+
+  <div class="hp" aria-hidden="true"><label>Не заполняйте это поле <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <div class="form-error" id="form-error" role="alert"></div>
+  <button type="submit" class="submit" id="submit">Отправить заказ</button>
+</form>
+
+<section class="card done" id="done" aria-live="polite" tabindex="-1">
+  <div class="tick" aria-hidden="true">&#10003;</div>
+  <h2 id="done-title">Заказ оформлен</h2>
+  <p id="done-text"></p>
+  <pre id="done-summary"></pre>
+  <div class="row">
+    <a class="btn" id="done-mail" href="#">Открыть письмо ещё раз</a>
+    <button type="button" class="btn alt" id="done-copy">Скопировать заказ</button>
+    <button type="button" class="btn alt" id="done-new">Новый заказ</button>
+  </div>
+</section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <hr>
+</footer>
+<script src="js/shop.js"></script>
+</body>
+</html>
